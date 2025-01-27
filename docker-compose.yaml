@@ -5,13 +5,13 @@ services:
   movieweb:
     build:
       context: .
-      # args:
+      args:
       #   PWA_ENABLED: "false"
       #   GA_ID: ""
       #   APP_DOMAIN: ""
-      #   OPENSEARCH_ENABLED: "false"
-      #   TMDB_READ_API_KEY: ""
-      #   CORS_PROXY_URL: ""
+          OPENSEARCH_ENABLED: "true"
+          TMDB_READ_API_KEY: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNjNmOWRmMTgxNzBlYzliZjQ1OWUxNjc4YmJmZTdmOSIsIm5iZiI6MTczMDQ0OTcyNC4xMDIwMDAyLCJzdWIiOiI2NzI0OTEzY2M0YWE5ODk0NWVmMzQ3NjkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.hVr8txVra5H_lI0LdcfjkU-ScGD1n9GRwq1Tq7ia4gc"
+          CORS_PROXY_URL: "https://seamanplayerproxy.netlify.app"
       #   DMCA_EMAIL: ""
       #   NORMAL_ROUTER: "false"
       #   BACKEND_URL: ""
