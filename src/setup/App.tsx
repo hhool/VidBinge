@@ -28,6 +28,7 @@ import { RegisterPage } from "@/pages/Register";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
+import { setLogLevel } from "@/utils/logconfig";
 
 const DeveloperPage = lazy(() => import("@/pages/DeveloperPage"));
 const TestView = lazy(() => import("@/pages/developer/TestView"));
@@ -88,7 +89,12 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-
+  // get current is development mode
+  const devMode = process.env.NODE_ENV === "development";
+  if (devMode) {
+    // set LogConfig log level to info
+    setLogLevel("Info");
+  }
   return (
     <Layout>
       <LanguageProvider />

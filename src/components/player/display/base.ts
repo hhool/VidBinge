@@ -29,6 +29,7 @@ import {
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
 import { makeEmitter } from "@/utils/events";
+import { getLogger } from "@/utils/logconfig";
 
 const levelConversionMap: Record<number, SourceQuality> = {
   360: "360",
@@ -140,6 +141,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     hls = null;
     if (src.type === "hls") {
+      // TODO(hhool): debug log, hls source
+      if (process.env.NODE_ENV === "development") {
+        getLogger("player").info(`setupSource hls source: ${src.url}`);
+      }
       if (canPlayHlsNatively(vid)) {
         vid.src = processCdnLink(src.url);
         vid.currentTime = startAt;
@@ -238,11 +243,19 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       hls.attachMedia(vid);
       hls.loadSource(processCdnLink(src.url));
       vid.currentTime = startAt;
+      // TODO(hhool): debug log, hls source
+      if (process.env.NODE_ENV === "development") {
+        getLogger("player").info(`setupSource hls source: ${src.url}`);
+      }
       return;
     }
 
     vid.src = processCdnLink(src.url);
     vid.currentTime = startAt;
+    // TODO(hhool): debug log, non-hls source
+    if (process.env.NODE_ENV === "development") {
+      getLogger("player").info(`setupSource non-hls source: ${src.url}`);
+    }
   }
 
   function setSource() {

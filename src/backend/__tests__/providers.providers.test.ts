@@ -1,4 +1,11 @@
-import * as console from "console";
+
+import { getLogger } from "../../utils/logconfig";
+
+/* Root categories can and probably will be defined elsewhere, this is just an example */
+const logModel = getLogger("model");
+
+/* Create child categories based on a parent category, effectively allowing you to create a tree of loggers when needed */
+const logProvider = logModel.getChildCategory("metadata");
 
 import { describe, it, vi } from "vitest";
 
@@ -18,27 +25,21 @@ describe("getProviders", () => {
   it("should return providers with extension fetcher when extension is active", () => {
     const ps = getProviders();
     // output ps to see what it is
-    console.log("-----------------");
-    console.log(ps);
-    console.log("-----------------");
-    console.log(ps?.getMetadata("123"));
-    console.log("-----------------");
-    console.log(ps?.listSources());
-    console.log("-----------------");
-    console.log(ps?.listEmbeds());
-    console.log("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("--------${ps}--------");
+    logProvider.info("-----------------");
   });
 });
 
 describe("getAllProviders", () => {
   it("should return providers with standard fetcher for browser extension", () => {
     const ap = getAllProviders();
-    console.log("-----------------");
-    console.log(ap);
-    console.log("-----------------");
-    console.log(ap?.listSources());
-    console.log("-----------------");
-    console.log(ap?.listEmbeds());
-    console.log("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("-----------------");
+    logProvider.info("--------${ap}--------");
+    logProvider.info("-----------------");
   });
 });

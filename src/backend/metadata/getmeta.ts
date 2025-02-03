@@ -1,5 +1,7 @@
 import { FetchError } from "ofetch";
 
+import { getLogger } from "@/utils/logconfig";
+
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
   TMDBIdToUrlId,
@@ -38,6 +40,16 @@ export function formatTMDBMetaResult(
 ): TMDBMediaResult {
   if (type === MWMediaType.MOVIE) {
     const movie = details as TMDBMovieData;
+    // TODO(hhool): debug log, output movie, title, object_type, poster, original_release_date
+    if (process.env.NODE_ENV === "development") {
+      getLogger("metadata").info(
+        `formatTMDBMetaResult movie: ${movie}, title: ${movie.title}, object_type: ${mediaTypeToTMDB(
+          type,
+        )}, poster: ${getMediaPoster(movie.poster_path)}, original_release_date: ${new Date(
+          movie.release_date,
+        )}`,
+      );
+    }
     return {
       id: details.id,
       title: movie.title,
@@ -48,6 +60,16 @@ export function formatTMDBMetaResult(
   }
   if (type === MWMediaType.SERIES) {
     const show = details as TMDBShowData;
+    // TODO(hhool): debug log, output show, title, object_type, seasons, poster, original_release_date
+    if (process.env.NODE_ENV === "development") {
+      getLogger("metadata").info(
+        `formatTMDBMetaResult show: ${show}, title: ${show.name}, object_type: ${mediaTypeToTMDB(
+          type,
+        )}, seasons: ${show.seasons}, poster: ${getMediaPoster(
+          show.poster_path,
+        )}, original_release_date: ${new Date(show.first_air_date)}`,
+      );
+    }
     return {
       id: details.id,
       title: show.name,
@@ -105,7 +127,12 @@ export async function getMetaFromId(
   if (!tmdbmeta) return null;
   const meta = formatTMDBMeta(tmdbmeta, seasonData);
   if (!meta) return null;
-
+  // TODO(hhool): debug log, output meta, imdbId, id
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(
+      `getMetaFromId meta: ${meta}, imdbId: ${imdbId}, id: ${id}`,
+    );
+  }
   return {
     meta,
     imdbId,

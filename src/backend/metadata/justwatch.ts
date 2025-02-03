@@ -1,3 +1,5 @@
+import { getLogger } from "@/utils/logconfig";
+
 import {
   JWContentTypes,
   JWMediaResult,
@@ -35,7 +37,12 @@ export function formatJWMeta(
         }),
       );
   }
-
+  // TODO(hhool): debug log, output media, season, type, seasons
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(
+      `formatJWMeta media: ${media}, season: ${season}, type: ${type}, seasons: ${seasons}`,
+    );
+  }
   return {
     title: media.title,
     id: media.id.toString(),
@@ -76,6 +83,10 @@ export function decodeJWId(
     mediaType = JWMediaToMediaType(type);
   } catch {
     return null;
+  }
+  // TODO(hhool): debug log, output mediaType, id
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`decodeJWId mediaType: ${mediaType}, id: ${id}`);
   }
   return {
     type: mediaType,

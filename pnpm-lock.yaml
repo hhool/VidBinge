@@ -157,6 +157,15 @@ importers:
       subsrt-ts:
         specifier: ^2.1.2
         version: 2.1.2
+      typescript-logging:
+        specifier: ^2.2.0
+        version: 2.2.0
+      typescript-logging-category-style:
+        specifier: ^2.2.0
+        version: 2.2.0(typescript-logging@2.2.0)
+      typescript-logging-log4ts-style:
+        specifier: ^2.2.0
+        version: 2.2.0(typescript-logging@2.2.0)
       zustand:
         specifier: ^4.5.4
         version: 4.5.4(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1)
@@ -4028,6 +4037,19 @@ packages:
   typed-array-length@1.0.6:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
+
+  typescript-logging-category-style@2.2.0:
+    resolution: {integrity: sha512-eZ33wSIS7qkgmomMlciEuniWVCg04/anU4RKdc5q62nFfBYBXKocKbksYoDGBZtg/wKs8syXEdceWnAx7Xhr/A==}
+    peerDependencies:
+      typescript-logging: ~2.2.0
+
+  typescript-logging-log4ts-style@2.2.0:
+    resolution: {integrity: sha512-NP8uoFVoNJkhH6iOM1Y8+/RVFoSPCxLe/kgdxQ0uJNhUJh4CLp7CuMIh/njC9mzK0wdq2DgSJcmlzkqnRXx1Eg==}
+    peerDependencies:
+      typescript-logging: ~2.2.0
+
+  typescript-logging@2.2.0:
+    resolution: {integrity: sha512-mPKFGAgGJmeCqrzA6B64Lqoz6vLPtxa8yCd7sWAnfrz9opuNlxqW57VxjtEOL0OOoQeTdc/kBjGUh8sieBXa8A==}
 
   typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
@@ -9213,6 +9235,16 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
+  typescript-logging-category-style@2.2.0(typescript-logging@2.2.0):
+    dependencies:
+      typescript-logging: 2.2.0
+
+  typescript-logging-log4ts-style@2.2.0(typescript-logging@2.2.0):
+    dependencies:
+      typescript-logging: 2.2.0
+
+  typescript-logging@2.2.0: {}
+
   typescript@4.9.5: {}
 
   typescript@5.5.4: {}
@@ -9336,6 +9368,8 @@ snapshots:
       semver: 7.6.3
       slugify: 1.6.6
       subsrt-ts: 2.1.2
+      typescript-logging: 2.2.0
+      typescript-logging-category-style: 2.2.0(typescript-logging@2.2.0)
       zustand: 4.5.4(@types/react@18.3.3)(immer@10.1.1)(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'

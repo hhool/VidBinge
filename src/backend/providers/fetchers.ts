@@ -2,6 +2,7 @@ import { Fetcher, makeSimpleProxyFetcher } from "@movie-web/providers";
 
 import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
+import { getLogger } from "@/utils/logconfig";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
 import { convertBodyToObject, getBodyTypeFromBody } from "../extension/request";
@@ -15,6 +16,12 @@ function makeLoadbalancedList(getter: () => string[]) {
     }
     const proxyUrl = fetchers[listIndex];
     listIndex = (listIndex + 1) % fetchers.length;
+    // TODO(hhool): debug log, output index length and proxyUrl
+    if (process.env.NODE_ENV === "development") {
+      getLogger("fetchers").info(
+        `makeLoadbalancedList index: ${listIndex}, length: ${fetchers.length}, proxyUrl: ${proxyUrl}`,
+      );
+    }
     return proxyUrl;
   };
 }
@@ -41,6 +48,12 @@ async function fetchButWithApiTokens(
   );
   const newApiToken = response.headers.get("X-Token");
   if (newApiToken) setApiToken(newApiToken);
+  // TODO(hhool): debug log, output apiToken and newApiToken
+  if (process.env.NODE_ENV === "development") {
+    getLogger("fetchers").info(
+      `fetchButWithApiTokens apiToken: ${apiToken}, newApiToken: ${newApiToken}`,
+    );
+  }
   return response;
 }
 
@@ -52,6 +65,12 @@ export function makeLoadBalancedSimpleProxyFetcher() {
     );
     return currentFetcher(a, b);
   };
+  // TODO(hhool): debug log, output fetcher
+  if (process.env.NODE_ENV === "development") {
+    getLogger("fetchers").info(
+      `makeLoadBalancedSimpleProxyFetcher fetcher: ${fetcher}`,
+    );
+  }
   return fetcher;
 }
 

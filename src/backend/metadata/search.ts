@@ -1,4 +1,5 @@
 import { SimpleCache } from "@/utils/cache";
+import { getLogger } from "@/utils/logconfig";
 import { MediaItem } from "@/utils/mediaTypes";
 
 import {
@@ -19,11 +20,18 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
   const { searchQuery } = query;
 
   const data = await multiSearch(searchQuery);
+  // TODO(hhool): debug log, output data
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`searchForMedia data: ${data}`);
+  }
   const results = data.map((v) => {
     const formattedResult = formatTMDBSearchResult(v, v.media_type);
     return formatTMDBMetaToMediaItem(formattedResult);
   });
-
+  // TODO(hhool): debug log, output results
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`searchForMedia results: ${results}`);
+  }
   const movieWithPosters = results.filter((movie) => movie.poster);
   const movieWithoutPosters = results.filter((movie) => !movie.poster);
 

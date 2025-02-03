@@ -3,19 +3,34 @@ import { jwtDecode } from "jwt-decode";
 
 import { mwFetch } from "@/backend/helpers/fetch";
 import { getTurnstileToken, isTurnstileInitialized } from "@/stores/turnstile";
+import { getLogger } from "@/utils/logconfig";
 
 let metaDataCache: MetaOutput[] | null = null;
 let token: null | string = null;
 
 export function setCachedMetadata(data: MetaOutput[]) {
+  // TODO(hhool): debug log, output data
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`setCachedMetadata data: ${data}`);
+  }
   metaDataCache = data;
 }
 
 export function getCachedMetadata(): MetaOutput[] {
+  // TODO(hhool): debug log, output metaDataCache
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(
+      `getCachedMetadata metaDataCache: ${metaDataCache}`,
+    );
+  }
   return metaDataCache ?? [];
 }
 
 export function setApiToken(newToken: string) {
+  // TODO(hhool): debug log, output newToken
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`setApiToken newToken: ${newToken}`);
+  }
   token = newToken;
 }
 
@@ -35,6 +50,10 @@ export async function fetchMetadata(base: string) {
   if (metaDataCache) return;
   const data = await mwFetch<MetaOutput[][]>(`${base}/metadata`);
   metaDataCache = data.flat();
+  // TODO(hhool): debug log, output metaDataCache
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`fetchMetadata metaDataCache: ${metaDataCache}`);
+  }
 }
 
 function scrapeMediaToQueryMedia(media: ScrapeMedia) {
@@ -46,9 +65,12 @@ function scrapeMediaToQueryMedia(media: ScrapeMedia) {
       seasonNumber: media.season.number.toString(),
       seasonTmdbId: media.season.tmdbId,
     };
+    // TODO(hhool): debug log, output extra
+    if (process.env.NODE_ENV === "development") {
+      getLogger("metadata").info(`scrapeMediaToQueryMedia extra: ${extra}`);
+    }
   }
-
-  return {
+  const queryMedia = {
     type: media.type,
     releaseYear: media.releaseYear.toString(),
     imdbId: media.imdbId,
@@ -56,6 +78,13 @@ function scrapeMediaToQueryMedia(media: ScrapeMedia) {
     title: media.title,
     ...extra,
   };
+  // TODO(hhool): debug log, output queryMedia
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(
+      `scrapeMediaToQueryMedia queryMedia: ${queryMedia}`,
+    );
+  }
+  return queryMedia;
 }
 
 function addQueryDataToUrl(url: URL, data: Record<string, string | undefined>) {
@@ -66,7 +95,7 @@ function addQueryDataToUrl(url: URL, data: Record<string, string | undefined>) {
 
 export function makeProviderUrl(base: string) {
   const makeUrl = (p: string) => new URL(`${base}${p}`);
-  return {
+  const providerUrl = {
     scrapeSource(sourceId: string, media: ScrapeMedia) {
       const url = makeUrl("/scrape/source");
       addQueryDataToUrl(url, scrapeMediaToQueryMedia(media));
@@ -84,12 +113,21 @@ export function makeProviderUrl(base: string) {
       return url.toString();
     },
   };
+  // TODO(hhool): debug log, output providerUrl
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`makeProviderUrl providerUrl: ${providerUrl}`);
+  }
+  return providerUrl;
 }
 
 export async function getApiToken(): Promise<string | null> {
   let apiToken = getTokenIfValid();
   if (!apiToken && isTurnstileInitialized()) {
     apiToken = `turnstile|${await getTurnstileToken()}`;
+  }
+  // TODO(hhool): debug log, output apiToken
+  if (process.env.NODE_ENV === "development") {
+    getLogger("metadata").info(`getApiToken apiToken: ${apiToken}`);
   }
   return apiToken;
 }
