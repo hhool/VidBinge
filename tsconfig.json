@@ -23,7 +23,8 @@
         "../node_modules/@sozialhelden/ietf-language-tags/dist/cjs"
       ]
     },
-    "types": ["vite/client", "vite-plugin-pwa/vanillajs"]
+    "types": ["vite/client", "vite-plugin-pwa/vanillajs"],
   },
+  "exclude": ["**/__tests__/**", "**/*.test.ts", "**/*.spec.ts"],
   "include": ["src"]
 }

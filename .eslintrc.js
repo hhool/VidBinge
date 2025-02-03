@@ -24,7 +24,10 @@ module.exports = {
     "/*.mts",
     "/plugins/*.ts",
     "/plugins/*.mjs",
-    "/themes/**/*.ts"
+    "/themes/**/*.ts",
+    "**/__tests__/**",
+    "**/*.test.ts",
+    "**/*.spec.ts"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {

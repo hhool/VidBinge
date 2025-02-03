@@ -192,7 +192,7 @@ export default defineConfig(({ mode }) => {
               return "caption-parsing";
             }
           }
-        }
+        },
       }
     },
     css: {
@@ -213,6 +213,7 @@ export default defineConfig(({ mode }) => {
 
     test: {
       environment: "jsdom",
+      exclude: ['**/__tests__/**', '**/*.test.ts', '**/*.spec.ts'], // Exclude test files
     },
   };
 });
