@@ -38,11 +38,11 @@ export function SidebarPart() {
   const [activeLink, setActiveLink] = useState("");
 
   const settingLinks = [
-    {
+    /* {
       textKey: "settings.account.title",
       id: "settings-account",
       icon: Icons.USER,
-    },
+    }, */
     {
       textKey: "settings.preferences.title",
       id: "settings-preferences",
@@ -163,8 +163,7 @@ export function SidebarPart() {
                 {backendUrl?.replace(/https?:\/\//, "") ?? "—"}
               </p>
             </div>
-
-            {/* User ID */}
+            {/*
             <div className="col-span-2 space-y-1">
               <p className="text-type-dimmed font-medium">
                 {t("settings.sidebar.info.userId")}
@@ -173,7 +172,7 @@ export function SidebarPart() {
                 {account?.userId ?? t("settings.sidebar.info.notLoggedIn")}
               </p>
             </div>
-
+            */}
             {/* App version */}
             <div className="col-span-1 space-y-1">
               <p className="text-type-dimmed font-medium">

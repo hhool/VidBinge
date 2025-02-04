@@ -263,7 +263,7 @@ export function SettingsPage() {
     <SubPageLayout>
       <PageTitle subpage k="global.pages.settings" />
       <SettingsLayout>
-        <div id="settings-account">
+        {/* <div id="settings-account">
           <Heading1 border className="!mb-0">
             {t("settings.account.title")}
           </Heading1>
@@ -288,8 +288,8 @@ export function SettingsPage() {
           ) : (
             <RegisterCalloutPart />
           )}
-        </div>
-        <div id="settings-preferences" className="mt-48">
+        </div> */}
+        <div id="settings-preferences" className="!mb-0">
           <PreferencesPart
             language={state.appLanguage.state}
             setLanguage={state.appLanguage.set}

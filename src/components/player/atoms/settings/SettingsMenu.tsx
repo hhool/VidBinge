@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { getCachedMetadata } from "@/backend/helpers/providerApi";
 import { Toggle } from "@/components/buttons/Toggle";
-import { Icon, Icons } from "@/components/Icon";
+// import { Icon, Icons } from "@/components/Icon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
@@ -12,10 +12,10 @@ import { qualityToString } from "@/stores/player/utils/qualities";
 import { useSubtitleStore } from "@/stores/subtitles";
 import { getPrettyLanguageNameFromLocale } from "@/utils/language";
 
-import { useDownloadLink } from "./Downloads";
+// import { useDownloadLink } from "./Downloads";
 
 export function SettingsMenu({ id }: { id: string }) {
-  const downloadUrl = useDownloadLink();
+  // const downloadUrl = useDownloadLink();
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
@@ -44,6 +44,7 @@ export function SettingsMenu({ id }: { id: string }) {
       t("player.menus.subtitles.unknownLanguage"))
     : undefined;
 
+  /*
   const source = usePlayerStore((s) => s.source);
 
   const downloadable = source?.type === "file" || source?.type === "hls";
@@ -56,6 +57,7 @@ export function SettingsMenu({ id }: { id: string }) {
       window.open(watchPartyUrl);
     }
   };
+  */
   return (
     <Menu.Card>
       <Menu.SectionTitle>
@@ -83,6 +85,7 @@ export function SettingsMenu({ id }: { id: string }) {
         >
           {t("player.menus.settings.sourceItem")}
         </Menu.ChevronLink>
+        {/*
         <Menu.Link
           clickable
           onClick={() =>
@@ -93,7 +96,9 @@ export function SettingsMenu({ id }: { id: string }) {
         >
           {t("player.menus.settings.downloadItem")}
         </Menu.Link>
-        <Menu.Link
+        */}
+        {/* 
+          <Menu.Link
           clickable
           onClick={handleWatchPartyClick}
           rightSide={<Icon className="text-xl" icon={Icons.WATCH_PARTY} />}
@@ -101,6 +106,7 @@ export function SettingsMenu({ id }: { id: string }) {
         >
           {t("Watch Party")}
         </Menu.Link>
+        */}
       </Menu.Section>
 
       <Menu.SectionTitle>

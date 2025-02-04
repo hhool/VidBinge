@@ -138,10 +138,9 @@ function App() {
           element={<OnboardingExtensionPage />}
         />
         <Route path="/onboarding/proxy" element={<OnboardingProxyPage />} />
-
-        {shouldHaveDmcaPage() ? (
+        {/* {shouldHaveDmcaPage() ? (
           <Route path="/dmca" element={<DmcaPage />} />
-        ) : null}
+        ) : null} */}
         {/* Settings page */}
         <Route
           path="/settings"

@@ -107,6 +107,7 @@ export function conf(): RuntimeConfig {
     DISCORD_LINK,
     FACEBOOK_LINK,
     INSTAGRAM_LINK,
+    // TODO(hhool): THINK ABOUT THIS
     HLSCONVERTER_URL: getKey(
       "HLSCONVERTER_URL",
       "https://hlsdownload.vidbinge.com",

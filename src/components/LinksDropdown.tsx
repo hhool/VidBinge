@@ -125,7 +125,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
       </div>
       <Transition animation="slide-down" show={open}>
         <div className="rounded-lg absolute w-64 bg-dropdown-altBackground top-full mt-3 right-0">
-          {deviceName && bufferSeed ? (
+          {/* {deviceName && bufferSeed ? (
             <DropdownLink className="text-white" href="/settings">
               <UserAvatar />
               {decryptData(deviceName, bufferSeed)}
@@ -135,7 +135,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
               {t("navigation.menu.register")}
             </DropdownLink>
           )}
-          <Divider />
+          <Divider /> */}
           <DropdownLink href="/discover" icon={Icons.COMPASS}>
             {t("navigation.menu.discover")}
           </DropdownLink>

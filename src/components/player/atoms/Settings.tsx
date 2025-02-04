@@ -88,7 +88,7 @@ function SettingsOverlay({ id }: { id: string }) {
             <PlaybackSettingsView id={id} />
           </Menu.Card>
         </OverlayPage>
-        <DownloadRoutes id={id} />
+        {/* <DownloadRoutes id={id} /> */}
       </OverlayRouter>
     </Overlay>
   );
