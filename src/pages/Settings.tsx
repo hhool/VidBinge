@@ -15,7 +15,6 @@ import { getAllProviders } from "@/backend/providers/providers";
 import { Button } from "@/components/buttons/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { UserIcons } from "@/components/UserIcon";
-import { Heading1 } from "@/components/utils/Text";
 import { Transition } from "@/components/utils/Transition";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
@@ -26,7 +25,6 @@ import { AccountEditPart } from "@/pages/parts/settings/AccountEditPart";
 import { CaptionsPart } from "@/pages/parts/settings/CaptionsPart";
 import { ConnectionsPart } from "@/pages/parts/settings/ConnectionsPart";
 import { DeviceListPart } from "@/pages/parts/settings/DeviceListPart";
-import { RegisterCalloutPart } from "@/pages/parts/settings/RegisterCalloutPart";
 import { SidebarPart } from "@/pages/parts/settings/SidebarPart";
 import { ThemePart } from "@/pages/parts/settings/ThemePart";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
@@ -140,7 +138,6 @@ export function SettingsPage() {
   const backendUrl = useBackendUrl();
 
   const { logout } = useAuth();
-  const user = useAuthStore();
 
   const state = useSettingsState(
     activeTheme,

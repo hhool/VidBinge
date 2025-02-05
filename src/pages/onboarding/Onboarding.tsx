@@ -76,6 +76,7 @@ export function OnboardingPage() {
             <span className="text-xs uppercase font-bold">or</span>
             <VerticalLine />
           </div>
+          {/* 
           <Card onClick={() => navigate("/onboarding/proxy")}>
             <CardContent
               colorClass="!text-onboarding-good"
@@ -86,6 +87,7 @@ export function OnboardingPage() {
               <Link>{t("onboarding.start.options.proxy.action")}</Link>
             </CardContent>
           </Card>
+          */}
         </div>
         {noProxies ? null : (
           <>

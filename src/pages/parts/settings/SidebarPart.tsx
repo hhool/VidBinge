@@ -10,7 +10,6 @@ import { Divider } from "@/components/utils/Divider";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { conf } from "@/setup/config";
-import { useAuthStore } from "@/stores/auth";
 
 const rem = 16;
 
@@ -32,7 +31,7 @@ function SecureBadge(props: { url: string | null }) {
 export function SidebarPart() {
   const { t } = useTranslation();
   const { isMobile } = useIsMobile();
-  const { account } = useAuthStore();
+  /* const { account } = useAuthStore(); */
   // eslint-disable-next-line no-restricted-globals
   const hostname = location.hostname;
   const [activeLink, setActiveLink] = useState("");

@@ -4,7 +4,7 @@ window.__CONFIG__ = {
   VITE_CORS_PROXY_URL: "",
 
   // The READ API key to access TMDB
-  VITE_TMDB_READ_API_KEY: "",
+  VITE_TMDB_READ_API_KEY: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNjNmOWRmMTgxNzBlYzliZjQ1OWUxNjc4YmJmZTdmOSIsIm5iZiI6MTczMDQ0OTcyNC4xMDIwMDAyLCJzdWIiOiI2NzI0OTEzY2M0YWE5ODk0NWVmMzQ3NjkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.hVr8txVra5H_lI0LdcfjkU-ScGD1n9GRwq1Tq7ia4gc",
 
   // The DMCA email displayed in the footer, null to hide the DMCA link
   VITE_DMCA_EMAIL: null,

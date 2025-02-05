@@ -1,13 +1,7 @@
-import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+/*
 import type { RequireExactlyOne } from "type-fest";
 
 import { Icon, Icons } from "@/components/Icon";
-import { BrandPill } from "@/components/layout/BrandPill";
-import { WideContainer } from "@/components/layout/WideContainer";
-import { shouldHaveDmcaPage } from "@/pages/Dmca";
-import { conf } from "@/setup/config";
 
 // to and href are mutually exclusive
 type FooterLinkProps = RequireExactlyOne<
@@ -53,10 +47,10 @@ function Dmca() {
       {t("footer.links.dmca")}
     </FooterLink>
   );
-}
+} */
 
 export function Footer() {
-  const { t } = useTranslation();
+  /* const { t } = useTranslation(); */
 
   return (
     <footer className="mt-16 border-t border-type-divider py-16 md:py-8">

@@ -17,7 +17,6 @@ import { usePlayerStore } from "@/stores/player/store";
 import { AudioView } from "./settings/AudioView";
 import { CaptionSettingsView } from "./settings/CaptionSettingsView";
 import { CaptionsView } from "./settings/CaptionsView";
-import { DownloadRoutes } from "./settings/Downloads";
 import { OpenSubtitlesCaptionView } from "./settings/opensubtitles";
 import { PlaybackSettingsView } from "./settings/PlaybackSettingsView";
 import { QualityView } from "./settings/QualityView";
